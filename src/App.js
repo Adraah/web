@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Route, Switch, Link } from "react-router-dom";
+import { Routes, Route, Link } from 'react-router-dom';
 import About from './About';
 import Home from './Home';
 
@@ -22,14 +22,10 @@ function App() {
           </ul>
         </nav>
       </div>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/about">
-          <About />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </div>
   );
 }
