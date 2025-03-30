@@ -1,30 +1,16 @@
-import './App.css';
 import React from 'react';
-import logo from './logo.svg';
+import SidebarComponent from './components/sidebarComponent';
 
-class Home extends React.Component {
-    render() {
-        return (
-            <div className="App">
-                <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-                </header>
+const Home = ({ onLogout }) => {
+    return (
+        <div style={{ display: 'flex' }}>
+            <SidebarComponent onLogout={onLogout} />
+            <div style={{ marginLeft: '220px', padding: '20px', flex: 1 }}>
+                <h1>Welcome to the Home Page</h1>
+                <p>This is your main screen after logging in!</p>
             </div>
-            
-        );
-    }
-
-}
+        </div>
+    );
+};
 
 export default Home;

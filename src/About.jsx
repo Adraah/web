@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SidebarComponent from './components/sidebarComponent';
+import EnhancedTable from './components/tableComponent';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const divStyle = {
-    color: 'white',
-    backgroundColor: 'black', // Add a background color to make the text visible
-  };
-  
+const About = ({ onLogout }) => {
+  const [isLoading, setIsLoading] = useState(false);
 
-class About extends React.Component {
-  render() {
-    return (
-      <div style={divStyle}>
-        <h2>About Page</h2>
-        <main>
-          <p>This section contains information about...</p>
-        </main>
+  return (
+    <div style={{ display: 'flex' }}>
+      <SidebarComponent onLogout={onLogout} />
+      <div style={{ marginLeft: '220px', padding: '20px', flex: 1, backgroundColor: '#c7c7c7', height: '100vh' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
+          {isLoading ? (
+             <CircularProgress size="3rem" color='#132246'/>
+          ) : (
+            <EnhancedTable />
+          )}
+          
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default About;
