@@ -40,6 +40,6 @@ export const login = (onLogin, username, password) => {
 };
 export const logout = () => {
     localStorage.clear();
-    window.location.href = '/#/login';
+    window.location.href = 'web/#/login';
     return null;
 };
