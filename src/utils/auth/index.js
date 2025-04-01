@@ -30,8 +30,8 @@ export const login = (onLogin, username, password) => {
           localStorage.setItem('accessToken', accessToken);
           localStorage.setItem('refreshToken', refreshToken);
           localStorage.setItem('email', username);
-  
           onLogin();
+          window.location.href = '/web/#/';
         },
         onFailure: (err) => {
           console.error('Login error', err);

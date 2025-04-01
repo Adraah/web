@@ -30,7 +30,7 @@ const sidebarStyle = {
   left: '0',
   width: '200px',
   height: '100%',
-  backgroundColor: '#4d4d4d',
+  backgroundColor: '#525660',
   color: 'white',
   padding: '20px',
 };

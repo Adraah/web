@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser } from 'amazon-cognito-identity-js';
 import SidebarComponent from './components/sidebarComponent';
+import './Register.css';
 
 const poolData = {
   UserPoolId: 'us-east-2_SolgJb1su',
@@ -67,60 +68,53 @@ const Register = ({ onLogout }) => {
   return (
     <div style={{ display: 'flex' }}>
       <SidebarComponent onLogout={onLogout} />
-      <div style={{ marginLeft: '220px', padding: '20px', flex: 1 }}>
-        <div style={{ color: 'white', backgroundColor: 'black' }}>
-          <h2>{isRegistered ? 'Verificar tu cuenta' : 'Registro de Usuario'}</h2>
+      <div style={{ marginLeft: '220px', flex: 1, backgroundColor: '#EEEEEF', height: '100vh', justifyItems: 'center', alignContent: 'center' }}>
+        <div style={{ color: 'black', backgroundColor: '#FFFFFF', borderRadius: '12px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', padding: '20px', width: '350px', margin: '0 auto', textAlign: 'center' }}>
+          <span style={{ fontSize: '24px', color: '#132246', fontWeight: 700 }}>Registro de usuarios</span>
           {!isRegistered ? (
-            <form onSubmit={handleRegister}>
-              <div>
-                <label>Nombre de Usuario:</label>
-                <input
-                  type="text"
+            <form style={{ marginTop: '20px' }} onSubmit={handleRegister}>
+              <div className="input-group">
+                <input type="text" placeholder="NOMBRE" className="input-field-register"
+                  id="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
                 />
               </div>
-              <div>
-                <label>Correo Electrónico:</label>
-                <input
-                  type="email"
+              <div className="input-group">
+                <input type="email" placeholder="EMAIL" className="input-field-register"
+                  id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
-              <div>
-                <label>Contraseña:</label>
-                <input
-                  type="password"
+              <div className="input-group">
+                <input type="password" placeholder="CONTRASEÑA" className="input-field-register"
+                  id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
+                  required />
               </div>
-              <div>
-                <label>Rol:</label>
-                <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <div className="input-group">
+                <select id="role" className='input-field-register' value={role} onChange={(e) => setRole(e.target.value)} style={{ width: '96%' }}>
                   <option value="user">Usuario</option>
                   <option value="admin">Administrador</option>
                   <option value="moderator">Moderador</option>
                 </select>
               </div>
-              <button type="submit">Registrarse</button>
+              <button onClick={handleRegister} className="login-button">Registrarse</button>
             </form>
           ) : (
             <form onSubmit={handleVerification}>
-              <div>
-                <label>Código de Verificación:</label>
-                <input
-                  type="text"
+              <div className="input-group" style={{ marginTop: '20px' }}>
+                <input type="text" placeholder="CODIGO" className="input-field-register"
+                  id="verificationCode"
                   value={verificationCode}
                   onChange={(e) => setVerificationCode(e.target.value)}
-                  required
-                />
+                  required />
               </div>
-              <button type="submit">Verificar Cuenta</button>
+              <button className="login-button" type="submit">Verificar Cuenta</button>
             </form>
           )}
 

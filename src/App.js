@@ -13,7 +13,6 @@ function App() {
   useEffect(() => {
     const idToken = localStorage.getItem('idToken');
     const accessToken = localStorage.getItem('accessToken');
-    console.log("🚀 ~ useEffect ~ accessToken:", accessToken);
 
     if (idToken && accessToken) {
       setIsLoggedIn(true);
@@ -34,10 +33,14 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home onLogout={handleLogout} />}
+          element={isLoggedIn ? <Home onLogout={handleLogout} /> : <Login onLogin={handleLogin} />}
         />
-        <Route path="/about" element={<About onLogout={handleLogout}/>} />
-        <Route path="/register" element={<Register onLogout={handleLogout}/>} />
+        <Route
+          path="/about"
+          element={isLoggedIn ? <About onLogout={handleLogout} /> : <Login onLogin={handleLogin} />} />
+        <Route
+          path="/register"
+          element={isLoggedIn ? <Register onLogout={handleLogout} /> : <Login onLogin={handleLogin} />} />
         <Route
           path="/login"
           element={<Login onLogin={handleLogin} />}

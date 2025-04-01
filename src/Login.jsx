@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { login } from './utils/auth';
+import './Login.css';
+import Logo from './assets/Logo.png';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -12,34 +13,31 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div style={{ color: 'white', backgroundColor: '#4d4d4d' }}>
-      <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
+    <div className="container">
+      <div className="login-box">
+        <div className="logo-container">
+          <img src={Logo} alt="Logo" className="logo" />
+        </div>
+        <div className="input-group">
+          <input type="text" placeholder="USUARIO" className="input-field"     
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
+        <div className="input-group">
+          <input type="password" placeholder="CONTRASEÑA" className="input-field" 
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+            required/>
         </div>
-        <div>
-          <button type="submit">Log In</button>
+        <div className="input-group">
+        <button onClick={handleLogin} className="login-button">Iniciar sesión</button>
         </div>
-      </form>
+        <p className="version">v 1.0</p>
+      </div>
     </div>
   );
 }
