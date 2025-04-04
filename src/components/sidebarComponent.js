@@ -17,6 +17,9 @@ const Sidebar = ({ onLogout }) => {
             <Link to="/register" style={linkStyle}>Registro</Link>
           </li>
           <li>
+            <Link to="/register" style={linkStyle}>Tiempos</Link>
+          </li>
+          <li>
             <button onClick={onLogout} style={buttonStyle}>Cerrar sesion</button>
           </li>
         </ul>
