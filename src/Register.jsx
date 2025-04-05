@@ -68,7 +68,7 @@ const Register = ({ onLogout }) => {
   return (
     <div style={{ display: 'flex' }}>
       <SidebarComponent onLogout={onLogout} />
-      <div style={{ marginLeft: '220px', flex: 1, backgroundColor: '#EEEEEF', height: '100vh', justifyItems: 'center', alignContent: 'center' }}>
+      <div style={{ marginLeft: '12%', flex: 1, backgroundColor: '#EEEEEF', height: '100vh', justifyItems: 'center', alignContent: 'center' }}>
         <div style={{ color: 'black', backgroundColor: '#FFFFFF', borderRadius: '12px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', padding: '20px', width: '350px', margin: '0 auto', textAlign: 'center' }}>
           <span style={{ fontSize: '24px', color: '#132246', fontWeight: 700 }}>Registro de usuarios</span>
           {!isRegistered ? (

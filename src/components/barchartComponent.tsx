@@ -12,13 +12,14 @@ export default function SimpleBarChart({ data, days }) {
           label: "Dias",
           tickSize: 0,
           grid: { stroke: "none" },
+          tickLabelStyle: { display: "none" },
         },
       ]}
       yAxis={[
         {
-          label: "Minutos",
           tickSize: 0,
           grid: { stroke: "none" },
+
         },
       ]}
       height={400}

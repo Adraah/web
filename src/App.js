@@ -5,6 +5,7 @@ import About from './About';
 import Home from './Home';
 import Register from './Register';
 import Login from './Login';
+import Time from './Time';
 import { logout } from './utils/auth';
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
         <Route
           path="/register"
           element={isLoggedIn ? <Register onLogout={handleLogout} /> : <Login onLogin={handleLogin} />} />
+          <Route
+          path="/time"
+          element={isLoggedIn ? <Time onLogout={handleLogout} /> : <Login onLogin={handleLogin} />} />
         <Route
           path="/login"
           element={<Login onLogin={handleLogin} />}

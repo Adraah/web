@@ -17,7 +17,7 @@ const Sidebar = ({ onLogout }) => {
             <Link to="/register" style={linkStyle}>Registro</Link>
           </li>
           <li>
-            <Link to="/register" style={linkStyle}>Tiempos</Link>
+            <Link to="/time" style={linkStyle}>Tiempos</Link>
           </li>
           <li>
             <button onClick={onLogout} style={buttonStyle}>Cerrar sesion</button>
@@ -31,7 +31,7 @@ const sidebarStyle = {
   position: 'fixed',
   top: '0',
   left: '0',
-  width: '200px',
+  width: '10%',
   height: '100%',
   backgroundColor: '#525660',
   color: 'white',

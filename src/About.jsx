@@ -10,30 +10,52 @@ const About = ({ onLogout }) => {
 
   const fetchData = async () => {
     try {
-        const data = await makeApiCall('GET', 'https://9ffoua37l6.execute-api.us-east-2.amazonaws.com/getTickets');
-        setTickets(data);
+      const data = await makeApiCall('GET', 'https://9ffoua37l6.execute-api.us-east-2.amazonaws.com/getTickets');
+      setTickets(data);
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-};
+  };
 
-useEffect(() => {
+  useEffect(() => {
     fetchData().finally(() => setIsLoading(false));
-}, []);
+  }, []);
 
   return (
     <div style={{ display: 'flex' }}>
       <SidebarComponent onLogout={onLogout} />
-      <div style={{ marginLeft: '220px', padding: '20px', flex: 1, backgroundColor: '#EEEEEF', height: '100vh' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '0px 0px 0px 20px' }}>
+      <div
+        style={{
+          marginLeft: '12%',
+          padding: '20px',
+          flex: 1,
+          backgroundColor: '#EEEEEF',
+          minHeight: '100vh',
+          boxSizing: 'border-box',
+          overflowX: 'auto',
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            padding: '0 20px',
+            marginBottom: '50px',
+            marginTop: '20px',
+          }}
+        >
           {isLoading ? (
-             <CircularProgress size="3rem" color='#132246'/>
+            <CircularProgress size="3rem" style={{ color: '#132246' }} />
           ) : (
-            <RepairDataTable data={tickets}/>
+            <div style={{ overflowX: 'auto', width: '100%' }}>
+              <RepairDataTable data={tickets} />
+            </div>
+
           )}
         </div>
       </div>
     </div>
+
   );
 };
 

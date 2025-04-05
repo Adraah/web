@@ -3,6 +3,7 @@ import { logout } from '../auth';
 
 const makeApiCall = async (method, url, data = null, params = null) => {
   const accessToken = localStorage.getItem('accessToken');
+  console.log("🚀 ~ makeApiCall ~ accessToken:", accessToken)
 
   if (!accessToken) {
     logout();
