@@ -8,6 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import PressCodeChart from './components/barlineComponent.tsx';
 
 const mapRepairData = (data) => {
+  if (!data) return [];
     const colors = [
       "#132246", "#0F1A38", "#0B1328", "#1A2E59", "#2C3E6A",
       "#3E5280", "#506798", "#627CAE", "#758FC2", "#89A3D7",
@@ -41,6 +42,7 @@ const mapRepairData = (data) => {
   };
 
   const mapDieWorkerTimeData = (data) => {
+    if (!data) return [];
     const colors = [
       "#132246", "#0F1A38", "#0B1328", "#1A2E59", "#2C3E6A",
       "#3E5280", "#506798", "#627CAE", "#758FC2", "#89A3D7",
@@ -79,6 +81,7 @@ const mapRepairData = (data) => {
   };
   
   const mapPressCodeChartData = (rawData, pressData) => {
+    if (!rawData || !pressData) return {};
     const timeMap = {};
   
     rawData.forEach(item => {
@@ -122,6 +125,7 @@ const Home = ({ onLogout }) => {
     { id: 2, value: 20, label: 'series C', color: "#132246" },]
 
     const getTimeElapsedByDay = (rawData) => {
+        if (!rawData) return;
         const now = new Date();
         const MS_PER_DAY = 24 * 60 * 60 * 1000;
         const timeMap = {};
@@ -162,7 +166,7 @@ const Home = ({ onLogout }) => {
     const fetchData = async () => {
         try {
             const data = await makeApiCall('GET', 'https://9ffoua37l6.execute-api.us-east-2.amazonaws.com/getTickets');
-            console.log(data);
+            if (!data) return;
             setTickets(mapRepairData(data));
             getTimeElapsedByDay(data);
             setDieWorkers(mapDieWorkerTimeData(data));
@@ -184,6 +188,11 @@ const Home = ({ onLogout }) => {
                 {isLoading ? (
                     <CircularProgress size="3rem" color='#132246' />
                 ) : (
+                  !tickets ? (
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'transparent' }}>
+                      <span style={{ fontSize: '24px', color: '#132246', fontWeight: 700, backgroundColor: 'transparent' }}>No data</span>
+                    </div>
+                  ) : (
                     <>
                         <div style={{ flexDirection: 'row', display: 'flex', width: '100%', justifyContent: 'space-evenly', marginBottom: '50px', marginTop: '50px' }}>
                             <div className='chart-box'>
@@ -205,7 +214,7 @@ const Home = ({ onLogout }) => {
                                 <PressCodeChart line={pressChartData.lineData} bar={pressChartData.barData} axis={pressChartData.xLabels} />
                             </div>
                         </div>
-                    </>
+                    </>)
                 )}
             </div>
         </div>
