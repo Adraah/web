@@ -184,9 +184,12 @@ const Home = ({ onLogout }) => {
     return (
         <div style={{ display: 'flex' }}>
             <SidebarComponent onLogout={onLogout} />
-            <div style={{ marginLeft: '12%', flex: 1, backgroundColor: '#EEEEEF', height: '100%', justifyItems: 'center', alignContent: 'center' }}>
+            <div style={{ marginLeft: '11%', backgroundColor: '#EEEEEF', height: '100vh', width: '100%', justifyItems: 'center', alignContent: 'center', marginBottom: '20px' }}>
                 {isLoading ? (
-                    <CircularProgress size="3rem" color='#132246' />
+                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'transparent' }}>
+                  <CircularProgress size="3rem" color='#132246' />
+                </div>
+                    
                 ) : (
                   !tickets ? (
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'transparent' }}>
@@ -194,7 +197,7 @@ const Home = ({ onLogout }) => {
                     </div>
                   ) : (
                     <>
-                        <div style={{ flexDirection: 'row', display: 'flex', width: '100%', justifyContent: 'space-evenly', marginBottom: '50px', marginTop: '50px' }}>
+                        <div style={{ flexDirection: 'row', display: 'flex', width: '100%', justifyContent: 'space-evenly',  marginTop: '20px', backgroundColor: '#EEEEEF' }}>
                             <div className='chart-box'>
                                 <span style={{ fontSize: '24px', color: '#132246', fontWeight: 700 }}>Tiempo muerto total {timeElapsed.toFixed(2)} minutos</span>
                                 <SimpleBarChart data={data} days={days} />
@@ -204,7 +207,7 @@ const Home = ({ onLogout }) => {
                                 <BasicPie data={dieWorkers} />
                             </div>
                         </div>
-                        <div style={{ flexDirection: 'row', display: 'flex', width: '100%', justifyContent: 'space-evenly', marginBottom: '50px', marginTop: '50px' }}>
+                        <div style={{ flexDirection: 'row', display: 'flex', width: '100%', justifyContent: 'space-evenly', marginTop: '50px', backgroundColor: '#EEEEEF' }}>
                             <div className='chart-box'>
                             <span style={{ fontSize: '24px', color: '#132246', fontWeight: 700 }}>Causas mas frecuentes</span>
                             <BasicPie data={tickets} />
