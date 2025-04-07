@@ -29,6 +29,7 @@ const Time = ({ onLogout }) => {
                 expectedTime: time
             });
             alert('Tiempo registrado con éxito.');
+            return;
         } catch (error) {
             console.error(error);
         }
@@ -49,6 +50,7 @@ const Time = ({ onLogout }) => {
                             <select id="role" className='input-field-register' value={selectedPress} onChange={(e) => {
                                 setSelectedPress(e.target.value)
                                 }} style={{ width: '96%' }}>
+                                <option value="">Seleccione una herramienta</option>
                                 {pressOptions.map((press) => (
                                     <option key={press._id} value={press._id}>
                                         {press.name}
